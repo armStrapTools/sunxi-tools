@@ -43,7 +43,7 @@ AS_IF([test "x$with_baremetal" = "xyes"], [
 	AC_PATH_PROG([ARM_CPY], [arm-none-eabi-objcopy])
 	AC_PATH_PROG([ARM_NM], [arm-none-eabi-nm])
 	AC_MSG_CHECKING([whether we can build the bare metal tools])
-	AS_IF([test x$cross_compiling = xyes], [baremetal=false], AS_IF([test -z "$ARM_NM"], [baremetal=false], AS_IF([test -z "$ARM_CPY"], [baremetal=false], AS_IF([test -z "$ARM_GCC"], [baremetal=false], [baremetal=true]))))
+	AS_IF([test -z "$ARM_NM"], [baremetal=false], AS_IF([test -z "$ARM_CPY"], [baremetal=false], AS_IF([test -z "$ARM_GCC"], [baremetal=false], [baremetal=true])))
 	AS_IF([test x$baremetal = xtrue], [AC_MSG_RESULT([yes])], [AC_MSG_RESULT([no])])
 	], [baremetal=false])
 AM_CONDITIONAL([BUILD_BAREMETAL], [test x$baremetal = xtrue])
