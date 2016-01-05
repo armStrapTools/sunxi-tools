@@ -4,28 +4,22 @@ Makefile.in
 
 # http://www.gnu.org/software/autoconf
 
-/autom4te.cache
-/autoscan.log
-/autoscan-*.log
-/aclocal.m4
-/compile
-/config.h.in
-/config.guess
-/config.sub
-/configure
-/configure.scan
-/depcomp
-/install-sh
-/missing
-/stamp-h1
+/**/autom4te.cache/
+/**/autoscan.log
+/**/autoscan-/*.log
+/**/aclocal.m4
+/**/compile
+/**/config.h.in
+/**/config.guess
+/**/config.sub
+/**/configure
+/**/configure.scan
+/**/depcomp
+/**/install-sh
+/**/missing
+/**/stamp-h1
 
-sunxi-fexc
-sunxi-bin2fex
-sunxi-fex2bin
-sunxi-bootinfo
-sunxi-fel
-sunxi-pio
-sunxi-nand-part
+
 *.o
 *.swp
 *.old
