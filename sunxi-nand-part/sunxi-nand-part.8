@@ -1,0 +1,87 @@
+.TH SUNXI-NAND-PART "8" "January 2016" "Sunxi-Tools for allWinner's devices"
+.SH NAME
+sunxi-nand-part \- Tool for manipulating Allwinner NAND or image file partition table.
+.SH SYNOPSIS
+.B sunxi-nand-part
+[\fIoptions\fR]
+.SH DESCRIPTION
+.\" Add any additional description here
+.PP
+Manipulate SUNXI partitions, currently support SUN4i and SUN7i partition scheme.
+.PP
+Mandatory arguments to long options are mandatory for short options too.
+.PP
+.TP
+\fB\-?\fR, \fB\-h\fR, \fB\-\-help\fR
+Display this information.
+.TP
+\fB-t\fR, \fB\-\-type=\fR<\fITYPE\fR>.
+Specify device type
+.TP
+\fB-d\fR, \fB\-\-device\fR
+Specify NAND device (default: /dev/nand).
+.TP
+\fB-c\fR, \fB\-\-clean\fR
+Create an empty MBR
+.TP
+\fB-b\fR, \fB\-\-backup=\fR<\fIFILE\fR>
+Backup MBR to FILE
+.TP
+\fB-r\fR, \fB\-\-restore=\fR<\fIFILE\fR>
+Restore MBR to FILE
+.TP
+\fB-p\fR, \fB\-\-partition=\fr<\fIOPTIONS\fR>
+Modify a partition, <\fIOPTIONS\fR> are a comma-separated list made of the following items:
+.TP
+\fBadd=\fR<\fIPARAMS\fR>
+Add, a partition
+.TP
+\fBinsert=\fR<\fIID\fR>\fI,\fR<\fIPARAMS\fR>
+Insert a partition at <\fIID\fR>
+.TP
+\fBdelete=\fR<\fIID\fR>
+Delete partition <\fIID\fR>
+.TP
+Parameters for add/insert:
+.TP
+\fBstart\fR=<\fIBLOCK\fR>
+Starting block of the partition
+.TP
+\fBlength=\fR<\fIBLOCKS\fR>
+Length of the partition in bocks (-1, use wathever is left)
+.TP
+\fBclass=\fR<\fICLASS\fR>
+Class ID of the partition (default: DISK)
+.TP
+\fBname=\fR<\fINAME\fR>
+Name of the partition
+.TP
+\fBro\fR
+Partition should be flagged Read-Only
+.PP
+.SS "Exit status:"
+.TP
+0
+if OK,
+.TP
+1
+if problems.
+.SH AUTHOR
+Written by Eddy Beaupre and Patrick H Wood.
+.SH "REPORTING BUGS"
+armStrapTools github support: <https://github.com/armStrapTools/sunxi-tools>
+.SH COPYRIGHT
+Copyright \(co 2007-2012  Allwinner Technology Co., Ltd. <www.allwinnertech.com>
+.br
+Copyright \(co 2013  Patrick H Wood, All rights reserved.
+.br
+Copyright \(co 2015  Eddy Beaupre <eddy@beaupre.biz>
+.PP
+License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH "SEE ALSO"
+.TP
+\fBsunxi-tools\fR
+Sunxi-Tools's general help

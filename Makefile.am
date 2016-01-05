@@ -1,5 +1,6 @@
 DIST_SUBDIRS = sunxi-bootinfo sunxi-meminfo sunxi-nand-part sunxi-phoenix_info sunxi-pio sunxi-script_extractor sunxi-fexc sunxi-fel sunxi-baremetal
 SUBDIRS = sunxi-nand-part sunxi-phoenix_info sunxi-fexc sunxi-bootinfo
+EXTRA_DIST = README.nd AUTHORS COPYING INSTALL
 
 if ARM_BUILD
 SUBDIRS += sunxi-meminfo sunxi-pio sunxi-script_extractor

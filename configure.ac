@@ -8,7 +8,7 @@ AC_CONFIG_AUX_DIR([.])
 #AC_CONFIG_HEADERS([config.h])
 
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE([subdir-objects])
+AM_INIT_AUTOMAKE([subdir-objects foreign])
 
 # Checks for programs.
 AC_PROG_CC
