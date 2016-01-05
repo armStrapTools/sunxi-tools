@@ -4,6 +4,25 @@ sunxi-tools
 Tools to help hacking Allwinner A10 (aka sun4i) ans A20 (aka sun7i) based devices
 and possibly their successors, that's why the 'x' in the package name.
 
+
+Building the tools
+------------------
+By default, the configure script will detect the buid environment and decide what set of tools to build. On an ARM platform, all the tools will be build, on any other platform, just the architecture independent tools will be build.
+
+    ./configure
+    make
+
+You can cross-compile the tools by specifying the '--host' switch.
+
+    ./configure --host=arm-linux-gnueabihf
+    make
+
+To build the bare-metal tools, use the '--with-baremetal' switch when running configure.
+    ./configure --with-baremetal
+    make
+
+See './configure --help' for more information on the.
+
 Architecture independent tools
 ------------------------------
 Theses tools can run natively on the device or offline on another device, they can be build for any CPU architecture.
@@ -71,6 +90,7 @@ Gives information about a phoenix image created by the phoenixcard utility and o
        -o X    destination directory, file or pattern (%d for part number)
        -s      save all parts
 	
+
 Architecture dependent tools
 ----------------------------
 Theses tools are dependent of hardware functions of SUNXI devices and are only build when cross-compiling or compiling natively on an ARM device.
@@ -106,7 +126,9 @@ Tool for manipulating the GPIO of a device.
       pull 0=none, 1=up, 2=down
       drive 0-3, I/O drive level
 
-###Library dependent tools
+
+Library dependent tools
+-----------------------
 Theses tools are dependent of specific libraries and will only build if the library is avalable natively on the builder system (not cross-compiling).
 
 ###sunxi-fel
@@ -147,20 +169,28 @@ script interface for talking to the FEL USB handler built into the CPU. You acti
 ###sunxi-fel-gpio
 Simple wrapper around sunxi-pio and sunxi-fel to allos GPIO manipulations via FEL
 
+
 Bare Metal Tools
 ----------------
+Theses tools are for bare-metal (no operating system) use, they are not normally build, to build them, use the --with-baremetal when you run configure.
 
-###fel-sdboot
+###sunxi-fel-copy
+ARM native tool to copy a memory area to another.
+
+###sunxi-fel-pio
+ARM native helper for sunxi-fel-gpio
+
+###sunxi-fel-sdboot
 ARM native sdcard bootloader forcing the device into FEL mode
 
-###fel-pio
-ARM native helper for fel-gpio
-
-###sunxi-pio
-Manipulate PIO register dumps
-
-###jtag-loop.sunxi:
+###sunxi-jtag-loop.sunxi
 ARM native boot helper to force the SD port into JTAG and then stop, to ease debugging of bootloaders.
+
+###sunxi-boot_head_sun4i.bin
+ARM native shim to fix incorrect board ID on sun4i device
+
+###sunxi-boot_head_sun5i.bin
+ARM native shim to fix incorrect board ID on sun5i device
 
 This software is licensed under the terms of GPLv2+ as defined by the Free Software Foundation, details can be read in the COPYING file.
 
