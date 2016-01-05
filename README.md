@@ -22,7 +22,14 @@ To build the bare-metal tools, use the '--with-baremetal' switch when running co
     ./configure --with-baremetal
     make
 
-See `./configure --help` for more information on the.
+
+To install the tools, just do a `make install` once everything is build. To change the default installation path, use the `--prefix` switch.
+
+    ./configure --host=arm-linux-gnueabihf --prefix=/home/user/arm-build/usr
+    make
+    make install
+
+See `./configure --help` for more information on the build process and all avalable parameters.
 
 Architecture independent tools
 ------------------------------
