@@ -1,8 +1,7 @@
 sunxi-tools
 -----------
 
-Tools to help hacking Allwinner A10 (aka sun4i) ans A20 (aka sun7i) based devices
-and possibly their successors, that's why the 'x' in the package name.
+Tools to help hacking Allwinner A10 (aka sun4i) ans A20 (aka sun7i) based devices and possibly their successors, that's why the 'x' in the package name.
 
 
 Building the tools
@@ -12,7 +11,11 @@ By default, the configure script will detect the buid environment and decide wha
     ./configure
     make
 
-You can cross-compile the tools by specifying the `--host` switch.
+To build sunxi-fel, libusb-1.0 must be avalable on the system. It is also not possible to cross-compile sunxi-fel with this build system. 
+
+    apt-get install libusb-1.0-0-dev
+
+You can cross-compile the tools by specifying the `--host` switch, the proper toolchain must be avalable on the system. See https://linux-sunxi.org/Cross_Compiler for more informations on how to install the toolchain.
 
     ./configure --host=arm-linux-gnueabihf
     make
@@ -21,7 +24,6 @@ To build the bare-metal tools, use the '--with-baremetal' switch when running co
 
     ./configure --with-baremetal
     make
-
 
 To install the tools, just do a `make install` once everything is build. To change the default installation path, use the `--prefix` switch.
 
