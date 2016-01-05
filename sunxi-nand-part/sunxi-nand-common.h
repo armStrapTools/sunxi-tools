@@ -2,7 +2,7 @@
  * sunxi-tools/sunxi-nand-common.h
  *
  * Copyright (C) 2013  Patrick H Wood, All rights reserved.
- * Copyright (C) 2015  Eddy Beaupre <eddy@beaupre.biz>
+ * Copyright (C) 2015-2016  Eddy Beaupre <eddy@beaupre.biz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -105,6 +105,10 @@ SUNXI_PARTS *sunxi_parts_add(SUNXI_PARTS **sp, int cmd, long id, unsigned char *
 SUNXI_PARTS *sunxi_parts_free(SUNXI_PARTS **sp);
 
 void usage(char *program);
+void full_version(void);
+void version(void);
+void help(void);
+void licence(void);
 void **mbr_alloc(SUNXI_NAND *ni);
 void mbr_free(SUNXI_NAND *ni, void **mbr);
 int mbr_compare(SUNXI_NAND *ni, void **mbr1, void **mbr2);

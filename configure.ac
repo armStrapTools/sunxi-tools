@@ -1,11 +1,6 @@
-#                                               -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
-
 AC_PREREQ([2.69])
-AC_INIT([sunxi-tools], [V1.4], [https://github.com/linux-sunxi/sunxi-tools])
+AC_INIT([sunxi-tools], [1.4], [https://github.com/linux-sunxi/sunxi-tools])
 AC_CONFIG_AUX_DIR([.])
-#AC_CONFIG_SRCDIR([common.h])
-#AC_CONFIG_HEADERS([config.h])
 
 AC_CANONICAL_SYSTEM
 AM_INIT_AUTOMAKE([subdir-objects foreign])

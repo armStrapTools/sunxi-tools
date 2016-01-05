@@ -1,7 +1,7 @@
 /*
  * sunxi-tools/sunxi-nand-common.c
  *
- * Copyright (C) 2015  Eddy Beaupre <eddy@beaupre.biz>
+ * Copyright (C) 2015-2016  Eddy Beaupre <eddy@beaupre.biz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -29,6 +29,7 @@
 
 #include "sunxi-nand.h"
 #include "sunxi-nand-common.h"
+#include "config.h"
 
 /**
  * \fn void *voidfree(void **ptr)
@@ -247,7 +248,8 @@ void usage(char *program)
 {
     printf("usage: %s [options]\n", program);
     printf("Options:\n");
-    printf("  --help                   Display this information\n\n");
+    printf("  --help                   Display this information\n");
+    printf("  --version                Display version information\n\n");
     printf("  --type=<TYPE>            Specify device type\n");
     printf("  --device                 Specify NAND device (default: /dev/nand)\n\n");
     printf("  --clean                  Create an empty MBR\n");
@@ -263,7 +265,49 @@ void usage(char *program)
     printf("    length=<BLOCKS>        Length of the partition in bocks (-1, use wathever is left)\n");
     printf("    class=<CLASS>          Class ID of the partition (default: DISK)\n");
     printf("    name=<NAME>            Name of the partition\n");
-    printf("    ro                     Partition should be flagged Read-Only\n");
+    printf("    ro                     Partition should be flagged Read-Only\n\n");
+    help();
+    
+}
+
+/**
+ * \fn void full_version(void)
+ * \brief Show version information.
+ */
+void full_version(void) {
+    version();
+    printf("\n");
+    help();
+    printf("\n");
+    licence();
+}
+
+/**
+ * \fn void version(void)
+ * \brief Show version information.
+ */
+void version(void) {
+    printf("%s version %s (%s).\n", PACKAGE, PACKAGE_GIT_VERSION, PACKAGE_BUILD_DATE);
+    printf("%s <%s>.\n", PACKAGE_COPYRIGHT, PACKAGE_EMAIL);
+}
+
+/**
+ * \fn void help(void)
+ * \brief Show help information
+ */
+void help(void) {
+    printf("Report bugs to <%s>.\n", PACKAGE_BUGREPORT);
+    printf("%s home page <%s>.\n", PACKAGE, PACKAGE_URL);
+}
+
+/**
+ * \fn void licence(void)
+ * \brief Show licence information
+ */
+void licence(void) {
+    printf("License %s: %s <%s>\n", PACKAGE_LICENCE_NAME, PACKAGE_LICENCE_DESCRIPTION, PACKAGE_LICENCE_URL);
+    printf("This is free software; see the source for copying conditions.  There is NO\n");
+    printf("warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n");
 }
 
 /**

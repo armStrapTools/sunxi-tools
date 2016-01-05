@@ -2,7 +2,7 @@
  * sunxi-tools/sunxi-nand.c
  *
  * Copyright (C) 2013  Patrick H Wood, All rights reserved.
- * Copyright (C) 2015  Eddy Beaupre <eddy@beaupre.biz>
+ * Copyright (C) 2015-2016  Eddy Beaupre <eddy@beaupre.biz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -147,10 +147,11 @@ int main (int argc, char **argv)
             {"type",      required_argument, 0, 't' },
             {"force",     0,                 0, 'f' },
             {"help",      0,                 0, 'h' },
+            {"version",   0,                 0, 'v' },
             {0,           0,                 0,  0 }
         };
 
-        opt = getopt_long(argc, argv, "?fchr:b:d:p:t:", long_options, &option_index);
+        opt = getopt_long(argc, argv, "?fchvr:b:d:p:t:", long_options, &option_index);
 
         if (opt == -1) {
             break;
@@ -293,6 +294,18 @@ int main (int argc, char **argv)
         case 'f':
             cmd |= CMD_FORCE;
             break;
+        case 'v':
+            sunxi_parts_free(&sunxi_parts);
+            sunxi_nand_free(&sunxi_nand);
+            strfree(&board_device);
+            strfree(&board_type);
+            strfree(&backup_file);
+            strfree(&restore_file);
+            strfree(&program_name);
+            version();
+            printf("\n");
+            licence();
+            exit(EXIT_SUCCESS);
         case '?':
         case 'h':
             sunxi_parts_free(&sunxi_parts);
