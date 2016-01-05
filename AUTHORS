@@ -1,0 +1,32 @@
+sunxi-bootinfo: 
+	Copyright (C) 2012       Henrik Nordstrom <henrik@henriknordstrom.net>
+
+sunxi-fexc:
+	Copyright (C) 2012       Alejandro Mery <amery@geeks.cl>
+
+sunxi-fel:
+	Copyright (C) 2015       Bernhard Nortmann <bernhard.nortmann@web.de>
+
+sunxi-meminfo;
+	Copyright (C) 2012       Floris Bos <bos@je-eigen-domein.nl>
+	Copyright (c) 2014       Luc Verhaegen <libv@skynet.be>
+
+sunxi-nand-part:
+	Copyright (C) 2007-2012  Allwinner Technology Co., Ltd. <www.allwinnertech.com>
+	Copyright (C) 2013       Patrick H Wood, All rights reserved.
+	Copyright (C) 2015       Eddy Beaupre <eddy@beaupre.biz>
+
+sunxi-phoenix_info:
+	Copyright (C) 2012       Henrik Nordstrom <henrik@henriknordstrom.net>
+
+sunxi-pio:
+	Copyright (C) 2011       Henrik Nordstrom <henrik@henriknordstrom.net>
+
+sunxi-script_extractor:
+	Copyright (C) 2015       Olliver Schinagl <oliver@schinagl.nl>
+
+sunxi-baremetal:
+	Copyright (C) 2011-2012  Henrik Nordstrom <henrik@henriknordstrom.net>
+	Copyright (C) 2012       Jens Andersen <jens.andersen@gmail.com>
+	Copyright (C) 2007-2011  Allwinner Technology Co., Ltd. <www.allwinnertech.com>
+	Copyright (C) 2007-2011  Tom Cubie <tangliang@allwinnertech.com>

@@ -1,13 +1,9 @@
 /*
  * sunxi-tools/nand-sun7i.h
  *
- * (C) Copyright 2015
- * Eddy Beaupre <eddy@beaupre.biz>
- *
- * Derived from drivers/block/sun4i_nand/nfd/mbr.h
- *
- * (C) Copyright 2007-2012
- * Allwinner Technology Co., Ltd. <www.allwinnertech.com>
+ * Copyright (C) 2007-2012  Allwinner Technology Co., Ltd. <www.allwinnertech.com>
+ * Copyright (C) 2013  Patrick H Wood, All rights reserved.
+ * Copyright (C) 2015  Eddy Beaupre <eddy@beaupre.biz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as

@@ -1,7 +1,7 @@
 if BUILD_BAREMETAL
 
 noinst_PROGRAMS = mksunxiboot
-pkgdata_DATA = sunxi-fel-copy.bin sunxi-fel-pio.bin sunxi-jtag-loop.sunxi sunxi-jtag-loop-alt.sunxi sunxi-fel-sdboot.sunxi sunxi-boot_head_sun4i.bin sunxi-boot_head_sun5i.bin ramboot.scr ramboot.uboot-sh adb-devprobe.sh fel-gpio fel-to-spl-thunk.S
+pkgdata_DATA = sunxi-fel-copy.bin sunxi-fel-pio.bin sunxi-jtag-loop.sunxi sunxi-jtag-loop-alt.sunxi sunxi-fel-sdboot.sunxi sunxi-boot_head_sun4i.bin sunxi-boot_head_sun5i.bin ramboot.scr ramboot.uboot-sh adb-devprobe.sh fel-to-spl-thunk.S
 
 
 

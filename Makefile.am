@@ -1,8 +1,8 @@
 DIST_SUBDIRS = sunxi-bootinfo sunxi-meminfo sunxi-nand-part sunxi-phoenix_info sunxi-pio sunxi-script_extractor sunxi-fexc sunxi-fel sunxi-baremetal
-SUBDIRS = sunxi-nand-part sunxi-phoenix_info sunxi-fexc
+SUBDIRS = sunxi-nand-part sunxi-phoenix_info sunxi-fexc sunxi-bootinfo
 
 if ARM_BUILD
-SUBDIRS += sunxi-bootinfo sunxi-meminfo sunxi-pio sunxi-script_extractor
+SUBDIRS += sunxi-meminfo sunxi-pio sunxi-script_extractor
 endif
 
 if BUILD_SUNXIFEL
