@@ -1,6 +1,6 @@
 AC_PREREQ([2.69])
 AC_INIT([sunxi-nand-part], [1.4], [https://github.com/linux-sunxi/sunxi-tools])
-AC_CONFIG_SRCDIR([nand-part.c])
+AC_CONFIG_SRCDIR([sunxi-nand.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.

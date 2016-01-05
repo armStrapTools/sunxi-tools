@@ -1,4 +1,11 @@
 /*
+ * sunxi-tools/sunxi-nand.h
+ *
+ * (C) Copyright 2015
+ * Eddy Beaupre <eddy@beaupre.biz>
+ *
+ * Derived from work made by Patrick H Wood
+ *
  * (C) Copyright 2013
  * Patrick H Wood, All rights reserved.
  *
@@ -19,11 +26,34 @@
  *
  */
 
-#include "types.h"
+#ifndef __SUNXI_NAND_H__
+#define __SUNXI_NAND_H__
 
-extern int nand_part_a10 (int argc, char **argv, const char *cmd, int fd, int force);
-extern int nand_part_a20 (int argc, char **argv, const char *cmd, int fd, int force);
-extern int checkmbrs_a10 (int fd);
-extern int checkmbrs_a20 (int fd);
-extern void usage (const char *cmd);
-extern __u32 calc_crc32(void * buffer, __u32 length);
+#define MAX_PART_COUNT	120
+#define MAX_NAME	16
+
+#define CMD_BACKUP	0x0001
+#define CMD_RESTORE	0x0002
+#define CMD_3		0x0004
+#define CMD_4		0x0008
+#define CMD_CLEAN	0x0010
+#define CMD_FORCE	0x0020
+#define CMD_PART	0x0040
+#define CMD_HELP	0x0080
+
+#define	OPT_START	0
+#define OPT_LEN		1
+#define OPT_CLASS	2
+#define OPT_NAME	3
+#define OPT_TYPE	4
+#define OPT_RO		5
+#define OPT_ADD		6
+#define OPT_DELETE	7
+#define OPT_INSERT	8
+
+mode_t file_type(char *file);
+void sync_part(char *file);
+unsigned long file_size(char *file);
+unsigned long device_size(char *file);
+
+#endif    //__SUNXI_NAND_H__

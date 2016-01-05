@@ -1,7 +1,3 @@
 bin_PROGRAMS = sunxi-nand-part
 
-sunxi-nand-part$(EXEEXT): nand-part-main.c nand-part.c nand-part-a10.h nand-part-a20.h nand-common.h
-	$(CC) $(CFLAGS) -I../include/ -c -o nand-part-main.o nand-part-main.c
-	$(CC) $(CFLAGS) -I../include/ -c -o nand-part-a10.o nand-part.c -D A10
-	$(CC) $(CFLAGS) -I../include/ -c -o nand-part-a20.o nand-part.c -D A20
-	$(CC) $(LDFLAGS) -I../include/ -o $@ nand-part-main.o nand-part-a10.o nand-part-a20.o $(LIBS)
+sunxi_nand_part_SOURCES = sunxi-nand.c sunxi-nand-common.c sunxi-nand-read.c sunxi-nand-sun4i.c sunxi-nand-sun7i.c sunxi-nand-write.c sunxi-nand-common.h sunxi-nand.h sunxi-nand-read.h sunxi-nand-sun4i.h sunxi-nand-sun7i.h sunxi-nand-write.h
