@@ -1,69 +1,78 @@
 sunxi-tools
+-----------
 
 Tools to help hacking Allwinner A10 (aka sun4i) ans A20 (aka sun7i) based devices
 and possibly their successors, that's why the 'x' in the package name.
 
-Architecture independent tools:
+Architecture independent tools
+------------------------------
+
 	Theses tools can run natively on the device or offline on another
 	device, they can be build for any CPU architecture.
 
-sunxi-fexc:
+sunxi-fexc
+----------
+
 	`.fex` file (de)compiler, utility to (de)compile fex/bin format files
 	used by Allwinners's sdk to configure board's options under kernel
 	3.4.
 
-	Usage: ./sunxi-fexc [-vq] [-I <infmt>] [-O <outfmt>] [<input> [<output>]]
+    Usage: ./sunxi-fexc [-vq] [-I <infmt>] [-O <outfmt>] [<input> [<output>]]
+    
+    infmt:  fex, bin  (default:fex)
+    outfmt: fex, bin, uboot  (default:bin)
 
-	infmt:  fex, bin  (default:fex)
-	outfmt: fex, bin, uboot  (default:bin)
+sunxi-bin2fex
+-------------
 
-sunxi-bin2fex:
 	Compatibility shortcut to call `fexc` to decompile a binary blob
 	blob back into `.fex` format.
 
-	Usage: ./sunxi-bin2fex [-vq] [<binary file> [<fex file>]]
+    Usage: ./sunxi-bin2fex [-vq] [<binary file> [<fex file>]]
 
-sunxi-fex2bin:
+sunxi-fex2bin
+-------------
 	Compatiblity shortcut to call `fexc` to compile a `.fex` file to
 	blob used by sunxi kernel.
 
-	Usage: ./sunxi-fex2bin [-vq] [<fex file> [<binary file>]]
+    Usage: ./sunxi-fex2bin [-vq] [<fex file> [<binary file>]]
 
-sunxi-nand-part:
+sunxi-nand-part
+---------------
+
 	Tool for manipulating Allwinner NAND partition tables or NAND image
 	file.
 
-	usage: sunxi-nand-part [options]
-	Options:
-	  --help                   Display this information
-	
-	  --type=<TYPE>            Specify device type
-	  --device                 Specify NAND device (default: /dev/nand)
-	
-	  --clean                  Create an empty MBR
-	  --backup=<FILE>          Backup MBR to FILE
-	  --restore=<FILE>         Restore MBR to FILE
-	
-	  --partition=<OPTIONS>    Modify a partition, <OPTIONS> are a
-	  --comma-separated
-	                           list made of the following items:
-	    add=<PARAMS>           Add, a partition
-	    insert=<ID>,<PARAMS>   Insert a partition at <ID>
-	    delete=<ID>            Delete partition <ID>
-	
-	Parameters for add/insert:
-	    start=<BLOCK>          Starting block of the partition
-	    length=<BLOCKS>        Length of the partition in bocks (-1, use wathever is left)
-	    class=<CLASS>          Class ID of the partition (default: DISK)
-	    name=<NAME>            Name of the partition
-	    ro                     Partition should be flagged Read-Only
+    usage: sunxi-nand-part [options]
+    Options:
+      --help                   Display this information
+    
+      --type=<TYPE>            Specify device type
+      --device                 Specify NAND device (default: /dev/nand)
+    
+      --clean                  Create an empty MBR
+      --backup=<FILE>          Backup MBR to FILE
+      --restore=<FILE>         Restore MBR to FILE
+    
+      --partition=<OPTIONS>    Modify a partition, <OPTIONS> are a comma-separated
+                               list made of the following items:
+        add=<PARAMS>           Add, a partition
+        insert=<ID>,<PARAMS>   Insert a partition at <ID>
+        delete=<ID>            Delete partition <ID>
+    
+        Parameters for add/insert:
+        start=<BLOCK>          Starting block of the partition
+        length=<BLOCKS>        Length of the partition in bocks (-1, use wathever is left)
+        class=<CLASS>          Class ID of the partition (default: DISK)
+        name=<NAME>            Name of the partition
+        ro                     Partition should be flagged Read-Only
 
 sunxi-bootinfo:
 	Dump information from Allwinner boot files (boot0/boot1)
 	--type=sd	include SD boot info
 	--type=nand	include NAND boot info (not implemented)
-	
-	Usage: ./sunxi-bootinfo --type=sd <FILENAME>
+
+    Usage: ./sunxi-bootinfo --type=sd <FILENAME>
 
 sunxi-phoenix_info:
 	gives information about a phoenix image created by the
