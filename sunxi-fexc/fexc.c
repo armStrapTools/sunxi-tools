@@ -214,25 +214,30 @@ done:
 /*
  */
 static inline void app_usage(const char *arg0, int mode)
-{
-	errf("Usage: %s [-vq]%s[<input> [<output>]]\n", arg0,
-	     mode ? " " : " [-I <infmt>] [-O <outfmt>] ");
-
-	if (mode == 0)
-		fputs("\ninfmt:  fex, bin  (default:fex)"
-		      "\noutfmt: fex, bin, uboot  (default:bin)\n",
-		      stderr);
+{    
+    switch(mode) {
+        case 2:
+            errf("Usage: %s [-vq] [<binary file> [<fex file>]]\n", arg0);
+            break;
+        case 1:
+            errf("Usage: %s [-vq] [<fex file> [<binary file>]]\n", arg0);
+            break;
+        default:
+            errf("Usage: %s [-vq] [-I <infmt>] [-O <outfmt>] [<input> [<output>]]\n"
+                 "\ninfmt:  fex, bin  (default:fex)"
+                 "\noutfmt: fex, bin, uboot  (default:bin)\n", arg0);
+    }
 }
 
 static inline int app_choose_mode(char *arg0)
 {
-	const char *name = basename(arg0);
-	if (strcmp(name, "fex2bin") == 0)
-		return 1;
-	else if (strcmp(name, "bin2fex") == 0)
-		return 2;
-	else
-		return 0;
+    const char *name = basename(arg0);
+    if (strstr(name, "fex2bin") != NULL)
+        return 1;
+    else if (strstr(name, "bin2fex") != 0)
+        return 2;
+    else
+        return 0;
 }
 
 /*
