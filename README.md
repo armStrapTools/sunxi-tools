@@ -38,7 +38,7 @@ Theses tools can run natively on the device or offline on another device, they c
 ###sunxi-fexc
 `.fex` file (de)compiler, utility to (de)compile fex/bin format files used by Allwinners's sdk to configure board's options under kernel 3.4.
 
-    Usage: ./sunxi-fexc [-vq] [-I <infmt>] [-O <outfmt>] [<input> [<output>]]
+    Usage: sunxi-fexc [-vq] [-I <infmt>] [-O <outfmt>] [<input> [<output>]]
     
     infmt:  fex, bin  (default:fex)
     outfmt: fex, bin, uboot  (default:bin)
@@ -46,12 +46,12 @@ Theses tools can run natively on the device or offline on another device, they c
 ###sunxi-bin2fex
 Compatibility shortcut to call `fexc` to decompile a binary blob blob back into `.fex` format.
 
-    Usage: ./sunxi-bin2fex [-vq] [<binary file> [<fex file>]]
+    Usage: sunxi-bin2fex [-vq] [<binary file> [<fex file>]]
 
 ###sunxi-fex2bin
 Compatiblity shortcut to call `fexc` to compile a `.fex` file to blob used by sunxi kernel.
 
-    Usage: ./sunxi-fex2bin [-vq] [<fex file> [<binary file>]]
+    Usage: sunxi-fex2bin [-vq] [<fex file> [<binary file>]]
 
 ###sunxi-nand-part
 Tool for manipulating Allwinner NAND partition tables or NAND image file.
@@ -83,7 +83,7 @@ Tool for manipulating Allwinner NAND partition tables or NAND image file.
 ###sunxi-bootinfo
 Dump information from Allwinner boot files (boot0/boot1)
 
-    Usage: ./sunxi-bootinfo --type=<sd|nand> <FILENAME>
+    Usage: sunxi-bootinfo --type=<sd|nand> <FILENAME>
     
       --type=sd         include SD boot info
       --type=nand       include NAND boot info (not implemented)
@@ -91,7 +91,7 @@ Dump information from Allwinner boot files (boot0/boot1)
 ####sunxi-phoenix_info
 Gives information about a phoenix image created by the phoenixcard utility and optionally extracts the embedded boot code & firmware file from their hidden partitions.
 
-    Usage: ./sunxi-phoenix_info [options] [phoenix_image]
+    Usage: sunxi-phoenix_info [options] [phoenix_image]
        -v      verbose
        -q      quiet
        -p N    part number
@@ -142,7 +142,7 @@ Theses tools are dependent of specific libraries and will only build if the libr
 ###sunxi-fel
 script interface for talking to the FEL USB handler built into the CPU. You activate FEL mode by pushing the usboot/recovery button at poweron. See http://linux-sunxi.org/FEL/USBBoot for a detailed usage guide.
 
-    Usage: tmp/usr/bin/sunxi-fel [options] command arguments... [command...]
+    Usage: sunxi-fel [options] command arguments... [command...]
       -v, --verbose                   Verbose logging
       -p, --progress                  "write" transfers show a progress bar
     

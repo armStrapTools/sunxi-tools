@@ -1,0 +1,66 @@
+.TH SUNXI-BAREMETAL "8" "January 2016" "Sunxi-Tools for allWinner's devices"
+.SH NAME
+sunxi-baremetal \- A collection of tool for devises based on Allwinner's SUNXI CPUs.
+.SH SYNOPSIS
+.TP
+.B sunxi-fel-copy
+ARM native tool to copy a memory area to another.
+.TP
+.B sunxi-fel-sdboot
+ARM native sdcard bootloader forcing the device into FEL mode
+.TP
+.B sunxi-fel-pio
+ARM native helper for sunxi-fel-gpio
+.TP
+.B sunxi-jtag-loop.sunxi
+ARM native boot helper to force the SD port into JTAG and then stop, to ease debugging of bootloaders.
+.TP
+.B sunxi-boot_head_sun4i.bin
+ARM native shim to fix incorrect board ID on sun4i device
+.TP
+.B sunxi-boot_head_sun5i.bin
+ARM native shim to fix incorrect board ID on sun5i device
+.SH DESCRIPTION
+.\" Add any additional description here
+.PP
+The Sunxi-Baremetal tools are a collection of tools useful for working directly with the hardware (without any operating systems).
+.PP
+.B sunxi-fel-copy
+.br
+    \fI0x2100\fR Destination address
+.br
+    \fI0x2104\fR Source address (updated, allowing repeated copy to same destination).
+.br
+    \fI0x2108\fR Length
+.TP
+.B sunxi-fel-sdboot
+.TP
+.B sunxi-fel-pio
+.TP
+.B sunxi-jtag-loop.sunxi
+.TP
+.B sunxi-boot_head_sun4i.bin
+.TP
+.B sunxi-boot_head_sun5i.bin
+.PP
+.SH AUTHOR
+Written by Henrik Nordstrom, Jens Andersen, Tom Cubie and Allwinner Technology Co.
+.SH "REPORTING BUGS"
+armStrapTools github support: <https://github.com/armStrapTools/sunxi-tools>
+.SH COPYRIGHT
+Copyright \(co 2011-2012  Henrik Nordstrom <henrik@henriknordstrom.net>
+.br
+Copyright \(co 2012       Jens Andersen <jens.andersen@gmail.com>
+.br
+Copyright \(co 2007-2012  Allwinner Technology Co., Ltd. <www.allwinnertech.com>
+.br
+Copyright \(co 2007-2011  Tom Cubie <tangliang@allwinnertech.com>
+.br
+.PP
+License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH "SEE ALSO"
+.TP
+sunxi-fexc(8), sunxi-bin2fex(8), sunxi-fex2bin(8), sunxi-nand-part(8), sunxi-bootinfo(8), sunxi-phoenix_info(8), sunxi-meminfo(8), sunxi-script_extractor(8), sunxi-pio(8). sunxi-fel(8), sunxi-baremetal(8)

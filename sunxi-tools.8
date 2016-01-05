@@ -1,0 +1,145 @@
+.TH SUNXI-TOOLS "8" "January 2016" "Sunxi-Tools for allWinner's devices"
+.SH NAME
+sunxi-tools \- A collection of tool for devises based on Allwinner's SUNXI CPUs.
+.SH SYNOPSIS
+.TP
+Standard Tools
+.B sunxi-fexc 
+[\fI-vq\fR] [\fI-I\fR <\fIinfmt\fR>] [\fI-O\fR <\fIoutfmt\fR>] [<\fIinput\fR> [<\fIoutput\fR>]]
+.br
+.B sunxi-bin2fex
+[\fI-vq\fR] [<\fIbinary file\fR> [<\fIfex file\fR>]]
+.br
+.B sunxi-fex2bin
+[\fI-vq\fR] [<\fIfex file\fR> [<\fIbinary file\fR>]]
+.br
+.B sunxi-nand-part
+[\fIoptions\fR]
+.br
+.B sunxi-bootinfo
+\fI--type=\fR<\fIsd\fR|\fInand\fR> <\fIFILENAME\fR>
+.br
+.B sunxi-phoenix_info
+[\fIoptions\fR] [\fIphoenix_image\fR]
+.br
+.B sunxi-meminfo
+[\fIOPTION\fR]
+.br
+.Bsunxi-script_extractor
+.br
+.B sunxi-pio
+\fI-m\fR|\fI-i\fR \fIinput\fR [\fI-o output\fR] \fIpin\fR..
+.br
+.B sunxi-fel
+[\fIoptions\fR] \fIcommand\fR \fIarguments\fR... [\fIcommand\fR...]
+.B sunxi-fel-gpio
+.PP
+.TP
+Bare Metal Tools
+.B sunxi-fel-copy
+.br
+.B sunxi-fel-sdboot
+.br
+.B sunxi-fel-pio
+.br
+.B sunxi-jtag-loop.sunxi
+.br
+.B sunxi-boot_head_sun4i.bin
+.br
+.B sunxi-boot_head_sun5i.bin
+.br
+
+.SH DESCRIPTION
+.\" Add any additional description here
+.PP
+The Sunxi-Tools are a collection of tools useful for configuring or getting information about Allwinner devices. 
+.PP
+By default not all tools are installed, since some of them are only useful for bare-metal usage or do not work on other architecture than ARM.
+.PP
+.TP
+.B sunxi-fexc
+fex file (de)compiler, utility to (de)compile fex/bin format files used by Allwinners's sdk to configure board's options under sunxi 3.4 kernel.
+.TP
+.B sunxi-bin2fex
+Compatibility shortcut to call sunxi0fexc to decompile a binary blob blob back into fex format.
+.TP
+.B sunxi-fex2bin
+Compatiblity shortcut to call sunxi-fexc to compile a fex file to blob used by sunxi 3.4 kernel.
+.TP
+.B sunxi-nand-part
+Tool for manipulating Allwinner NAND or imag partition tables.
+.TP
+.B sunxi-bootinfo
+Dump information from Allwinner boot files (boot0/boot1)
+.TP
+.B sunxi-phoenix_info
+Gives information about a phoenix image created by the phoenixcard utility and optionally extracts the embedded boot code & firmware file from their hidden partitions.
+.TP
+.B sunxi-meminfo
+Tool for reading DRAM settings from registers. Compiled as a static binary for use on android and other OSes.
+.TP
+.B sunxi-script_extractor
+A simple tool, which can be executed on a rooted Android device to dump the script.bin blob from RAM via reading /dev/mem.
+.TP
+.B sunxi-pio
+Tool for manipulating the GPIO of a device.
+.TP
+.B sunxi-fel
+Script interface for talking to the FEL USB handler built into the CPU. You activate FEL mode by pushing the usboot/recovery button at poweron.
+.TP
+.B sunxi-fel-gpio
+Simple wrapper around sunxi-pio and sunxi-fel to allos GPIO manipulations via FEL
+.TP
+.B sunxi-fel-copy
+ARM native tool to copy a memory area to another.
+.TP
+.B sunxi-fel-sdboot
+ARM native sdcard bootloader forcing the device into FEL mode
+.TP
+.B sunxi-fel-pio
+ARM native helper for sunxi-fel-gpio
+.TP
+.B sunxi-jtag-loop.sunxi
+ARM native boot helper to force the SD port into JTAG and then stop, to ease debugging of bootloaders.
+.TP
+.B sunxi-boot_head_sun4i.bin
+ARM native shim to fix incorrect board ID on sun4i device
+.TP
+.B sunxi-boot_head_sun5i.bin
+ARM native shim to fix incorrect board ID on sun5i device
+.PP
+.SH AUTHOR
+Written by Henrik Nordstrom, Alejandro Mery, Bernhard Nortmann, Floris Bos, Luc Verhaegen, Patrick H Wood, Eddy Beaupre, Olliver Schinagl, Jens Andersen, Tom Cubie and Allwinner Technology Co.
+.SH "REPORTING BUGS"
+armStrapTools github support: <https://github.com/armStrapTools/sunxi-tools>
+.SH COPYRIGHT
+Copyright \(co 2011-2012  Henrik Nordstrom <henrik@henriknordstrom.net>
+.br
+Copyright \(co 2012       Alejandro Mery <amery@geeks.cl>
+.br
+Copyright \(co 2015       Bernhard Nortmann <bernhard.nortmann@web.de>
+.br
+Copyright \(co 2012       Floris Bos <bos@je-eigen-domein.nl>
+.br
+Copyright \(co 2014       Luc Verhaegen <libv@skynet.be>
+.br
+Copyright \(co 2007-2012  Allwinner Technology Co., Ltd. <www.allwinnertech.com>
+.br
+Copyright \(co 2013       Patrick H Wood, All rights reserved.
+.br
+Copyright \(co 2016       Eddy Beaupre <eddy@beaupre.biz>
+.br
+Copyright \(co 2015       Olliver Schinagl <oliver@schinagl.nl>
+.br
+Copyright \(co 2012       Jens Andersen <jens.andersen@gmail.com>
+.br
+Copyright \(co 2007-2011  Tom Cubie <tangliang@allwinnertech.com>
+.br
+.PP
+License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH "SEE ALSO"
+.TP
+sunxi-fexc(8), sunxi-bin2fex(8), sunxi-fex2bin(8), sunxi-nand-part(8), sunxi-bootinfo(8), sunxi-phoenix_info(8), sunxi-meminfo(8), sunxi-script_extractor(8), sunxi-pio(8). sunxi-fel(8), sunxi-baremetal(8)

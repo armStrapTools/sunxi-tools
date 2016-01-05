@@ -1,0 +1,98 @@
+.TH SUNXI-FEL "8" "January 2016" "Sunxi-Tools for allWinner's devices"
+.SH NAME
+sunxi-fel \- script interface for talking to the FEL USB handler built into the CPU.
+.SH SYNOPSIS
+.B sunxi-fel
+[\fIoptions\fr] \fIcommand\fR \fIarguments\fR... [\fIcommand\fR...]
+.br
+.B sunxi-fel-gpio
+.SH DESCRIPTION
+.\" Add any additional description here
+.PP
+script interface for talking to the FEL USB handler built into the CPU. You activate FEL mode by pushing the usboot/recovery button at poweron.
+.PP
+See http://linux-sunxi.org/FEL/USBBoot for a detailed usage guide.
+.PP
+.TP
+\fB-v\fR, \fB--verbose\fR
+Verbose logging
+.TP
+\fB-p\fR, \fB--progress\fR
+"write" transfers show a progress bar
+.TP
+\fBspl\fR \fIfile\fR
+Load and execute U-Boot SPL. If file additionally contains a main U-Boot binary (u-boot-sunxi-with-spl.bin), this command also transfers that to memory (default address from image), but won't execute it
+.TP
+\fBuboot\fR \fIfile-with-spl\fR
+like "spl", but actually starts U-Boot. U-Boot execution will take place when the fel utility exits. This allows combining "uboot" with further "write" commands (to transfer other files needed for the boot).
+
+.TP
+\fBhex\fR[\fBdump\fR] \fIaddress\fR \fIlength\fR
+Dumps memory region in hex
+.TP
+\fBdump\fR \fIaddress\fR \fIlength\fR
+Binary memory dump
+.TP
+\fBexe\fR[\fBcute\fR] \fIaddress\fR
+Call function address
+.TP
+\fBread\fR \fIaddress\fR \fIlength\fR \fIfile\fR
+Write memory contents into file
+.TP
+\fBwrite\fR \fIaddress\fR \fIfile\fR
+Store file contents into memory
+.TP
+\fBwrite-with-progress\fR \fIaddr\fR \fIfile\fR
+"write" with progress bar
+.TP
+\fBwrite-with-gauge\fR \fIaddr\fR \fIfile\fR
+Output progress for "dialog --gauge"
+.TP
+\fBwrite-with-xgauge\fR \fIaddr\fR \fIfile\fR
+Extended gauge output (updates prompt)
+.TP
+\fBmulti\fR[\fBwrite\fR] \fI#\fR \fIaddr\fR \fIfile\fR \fI...\fR
+"write-with-progress" multiple files, sharing a common progress status
+.TP
+\fBmulti\fR[\fBwrite\fR]\fB-with-gauge\fR <\fI#\fR> \fIaddr\fR \fIfile\fR [\fIaddr\fR \fIfile\fR [\fI...\fR]]
+like their "write-with-*" counterpart, but following the 'multi' syntax.
+.TP
+\fBmulti\fR[\fBwrite\fR]\fB-with-xgauge\fR <\fI#\fR> \fIaddr\fR \fIfile\fR [\fIaddr\fR \fIfile\fR [\fI...\fR]]
+like their "write-with-*" counterpart, but following the 'multi' syntax.
+.TP
+\fBecho-gauge\fR "\fIsome text\fR"
+Update prompt/caption for gauge output
+.TP
+\fBver\fR[\fBsion\fR]
+Show BROM version
+.TP
+\fBclear\fR \fIaddress\fR \fIlength\fR
+Clear memory
+.TP
+\fBfill\fR \fIaddress\fR \fIlength\fR \fIvalue\fR
+Fill memory
+.PP
+.SS "Exit status:"
+.TP
+0
+if OK,
+.TP
+1
+if problems.
+.SH AUTHOR
+Written by Henrik Nordstrom and Bernhard Nortmann.
+.SH "REPORTING BUGS"
+armStrapTools github support: <https://github.com/armStrapTools/sunxi-tools>
+.SH COPYRIGHT
+Copyright (C) 2012  Henrik Nordstrom <henrik@henriknordstrom.net>
+.br
+Copyright (C) 2015  Bernhard Nortmann <bernhard.nortmann@web.de>
+.PP
+License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH "SEE ALSO"
+.TP
+\fBsunxi-tools\fR
+Sunxi-Tools's general help
