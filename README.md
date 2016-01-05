@@ -8,7 +8,7 @@ Architecture independent tools
 ------------------------------
 Theses tools can run natively on the device or offline on another device, they can be build for any CPU architecture.
 
-- sunxi-fexc
+###sunxi-fexc
 `.fex` file (de)compiler, utility to (de)compile fex/bin format files used by Allwinners's sdk to configure board's options under kernel 3.4.
 
     Usage: ./sunxi-fexc [-vq] [-I <infmt>] [-O <outfmt>] [<input> [<output>]]
