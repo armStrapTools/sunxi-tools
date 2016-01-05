@@ -1,0 +1,40 @@
+.TH SUNXI-PHOENIX_INFO "8" "January 2016" "Sunxi-Tools for allWinner's devices"
+.SH NAME
+sunxi-phoenix_info \- Gives information about a phoenix image created by the phoenixcard utility and optionally extracts the embedded boot code & firmware file from their hidden partitions.
+.SH SYNOPSIS
+.TP
+.B sunxi-phoenix_info [\fIoptions\fR] [\fIphoenix_image\fR]
+.PP
+.SH DESCRIPTION
+.\" Add any additional description here
+.PP
+.TP
+\fB-v\fR
+verbose
+.TP
+\fB-q\fR
+quiet
+.TP
+\fB-p\fR \fIN\fR
+part number
+.TP
+\fB-o\fR \fIX\fR
+destination directory, file or pattern (%d for part number)
+.TP
+\fB-s\fR
+save all parts
+.PP
+.SH AUTHOR
+Written by Henrik Nordstrom.
+.SH "REPORTING BUGS"
+armStrapTools github support: <https://github.com/armStrapTools/sunxi-tools>
+.SH COPYRIGHT
+Copyright \(co 2012  Henrik Nordstrom <henrik@henriknordstrom.net>
+.PP
+License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH "SEE ALSO"
+.TP
+sunxi-fexc(8), sunxi-bin2fex(8), sunxi-fex2bin(8), sunxi-nand-part(8), sunxi-bootinfo(8), sunxi-phoenix_info(8), sunxi-meminfo(8), sunxi-script_extractor(8), sunxi-pio(8). sunxi-fel(8), sunxi-baremetal(8)

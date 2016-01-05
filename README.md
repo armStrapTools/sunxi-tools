@@ -88,7 +88,7 @@ Dump information from Allwinner boot files (boot0/boot1)
       --type=sd         include SD boot info
       --type=nand       include NAND boot info (not implemented)
 
-####sunxi-phoenix_info
+###sunxi-phoenix_info
 Gives information about a phoenix image created by the phoenixcard utility and optionally extracts the embedded boot code & firmware file from their hidden partitions.
 
     Usage: sunxi-phoenix_info [options] [phoenix_image]

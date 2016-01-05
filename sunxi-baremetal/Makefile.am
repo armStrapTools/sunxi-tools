@@ -1,8 +1,12 @@
 if BUILD_BAREMETAL
 
+EXTRA_DIST = sunxi-baremetal.8.in
 noinst_PROGRAMS = mksunxiboot
 pkgdata_DATA = sunxi-fel-copy.bin sunxi-fel-pio.bin sunxi-jtag-loop.sunxi sunxi-jtag-loop-alt.sunxi sunxi-fel-sdboot.sunxi sunxi-boot_head_sun4i.bin sunxi-boot_head_sun5i.bin ramboot.scr ramboot.uboot-sh adb-devprobe.sh fel-to-spl-thunk.S
 man_MANS = sunxi-baremetal.8
+
+sunxi-baremetal.8: sunxi-baremetal.8.in
+	 sed -e 's|@datadir[@]|$(pkgdatadir)|g' sunxi-baremetal.8.in > sunxi-baremetal.8
 
 
 
@@ -81,4 +85,4 @@ endif
 
 
 clean-local:
-	-rm -f *.bin *.elf *.sunxi
+	-rm -f *.bin *.elf *.sunxi sunxi-baremetal.8

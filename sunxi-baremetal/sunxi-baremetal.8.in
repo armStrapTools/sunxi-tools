@@ -3,6 +3,13 @@
 sunxi-baremetal \- A collection of tool for devises based on Allwinner's SUNXI CPUs.
 .SH SYNOPSIS
 .TP
+.SH DESCRIPTION
+.\" Add any additional description here
+.PP
+Theses are bare-metal tools useful if you want to have direct access to the hardware.
+.PP
+Theses tools are installed into @datadir@.
+.PP
 .B sunxi-fel-copy
 ARM native tool to copy a memory area to another.
 .TP

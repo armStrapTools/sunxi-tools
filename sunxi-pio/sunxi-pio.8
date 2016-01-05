@@ -1,0 +1,61 @@
+.TH SUNXI-PIO "8" "January 2016" "Sunxi-Tools for allWinner's devices"
+.SH NAME
+sunxi-pio \- Tool for manipulating the GPIO of a device.
+.SH SYNOPSIS
+.TP
+.B sunxi-pio \fI-m\fR|\fI-i\fR \fIinput\fR [\fI-o\fR \fIoutput\fR] \fIpin\fR..
+.PP
+.SH DESCRIPTION
+.\" Add any additional description here
+.PP
+.TP
+\fI-m\fR
+mmap - read pin state from system
+.TP
+\fI-i\fR
+read pin state from file
+.TP
+\fI-o\fR
+save pin state data to file
+.TP
+\fIprint\fR
+Show all pins
+.TP
+\fIPxx\fR
+Show pin
+.TP
+\fIPxx\fR<\fImode\fR><\fIpull\fR><\fRdrive\fR><\fIdata\fR>
+Configure pin
+.TP
+\fIPxx\fR=\fIdata\fR,\fIdrive\fR
+Configure GPIO output
+.TP
+\fIPxx*count\fR
+Oscillate GPIO output (mmap mode only)
+.TP
+\fIPxx?pull\fR
+Configure GPIO input
+.TP
+\fIclean\fR
+Clean input pins
+.PP
+mode 0-7, 0=input, 1=ouput, 2-7 I/O function.
+.br
+pull 0=none, 1=up, 2=down.
+.br
+drive 0-3, I/O drive level.
+.PP
+.SH AUTHOR
+Written by Henrik Nordstrom.
+.SH "REPORTING BUGS"
+armStrapTools github support: <https://github.com/armStrapTools/sunxi-tools>
+.SH COPYRIGHT
+Copyright \(co 2011  Henrik Nordstrom <henrik@henriknordstrom.net>
+.PP
+License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH "SEE ALSO"
+.TP
+sunxi-fexc(8), sunxi-bin2fex(8), sunxi-fex2bin(8), sunxi-nand-part(8), sunxi-bootinfo(8), sunxi-phoenix_info(8), sunxi-meminfo(8), sunxi-script_extractor(8), sunxi-pio(8). sunxi-fel(8), sunxi-baremetal(8)
