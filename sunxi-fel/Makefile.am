@@ -1,4 +1,4 @@
-EXTRA_DIST = sunxi-fel-gpio
+EXTRA_DIST = sunxi-fel-gpio sunxi-fel.8 sunxi-fel-gpio.8
 if BUILD_SUNXIFEL
 bin_PROGRAMS = sunxi-fel
 bin_SCRIPTS = sunxi-fel-gpio
