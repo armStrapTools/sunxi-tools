@@ -12,16 +12,17 @@ By default, the configure script will detect the buid environment and decide wha
     ./configure
     make
 
-You can cross-compile the tools by specifying the '--host' switch.
+You can cross-compile the tools by specifying the `--host` switch.
 
     ./configure --host=arm-linux-gnueabihf
     make
 
 To build the bare-metal tools, use the '--with-baremetal' switch when running configure.
+
     ./configure --with-baremetal
     make
 
-See './configure --help' for more information on the.
+See `./configure --help` for more information on the.
 
 Architecture independent tools
 ------------------------------
