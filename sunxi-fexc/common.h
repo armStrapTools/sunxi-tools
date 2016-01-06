@@ -14,8 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef _SUNXI_TOOLS_COMMON_H
-#define _SUNXI_TOOLS_COMMON_H
+#ifndef __SUNXI_FEXC_COMMON_H__
+#define __SUNXI_FEXC_COMMON_H__
 
 #include <stddef.h> /* offsetof */
 
@@ -40,68 +40,36 @@
 /** shortcut to printf to stderr */
 #define errf(...)	fprintf(stderr, __VA_ARGS__)
 
+#define pr_info(...)	errf("sunxi-fexc: " __VA_ARGS__)
+#define pr_err(...)	errf("E: sunxi-fexc: " __VA_ARGS__)
+
+#ifdef DEBUG
+#define pr_debug(...)	errf("D: sunxi-fexc: " __VA_ARGS__)
+#else
+#define pr_debug(...)
+#endif
+
 /*
  * list
  */
 
 /** a list hook */
 struct list_entry {
-	struct list_entry *prev;
-	struct list_entry *next;
+    struct list_entry *prev;
+    struct list_entry *next;
 };
-
-/** initialize an empty list hook */
-static inline void list_init(struct list_entry *self)
-{
-	self->prev = self->next = self;
-}
-
-/** puts an entry between two other on a list */
-static inline void list_inject(struct list_entry *l,
-			       struct list_entry *prev,
-			       struct list_entry *next)
-{
-	l->prev = prev;
-	l->next = next;
-
-	next->prev = l;
-	prev->next = l;
-}
 
 #define list_insert(H, E)	list_inject((E), (H), (H)->next)
 #define list_append(H, E)	list_inject((E), (H)->prev, (H))
 
-/** removes an entry for the list where it's contained */
-static inline void list_remove(struct list_entry *l)
-{
-	struct list_entry *prev = l->prev, *next = l->next;
-	next->prev = prev;
-	prev->next = next;
-}
+void list_init(struct list_entry *self);
+void list_inject(struct list_entry *l, struct list_entry *prev, struct list_entry *next);
+void list_remove(struct list_entry *l);
+struct list_entry *list_first(struct list_entry *l);
+struct list_entry *list_last(struct list_entry *l);
+struct list_entry *list_first(struct list_entry *l);
+struct list_entry *list_last(struct list_entry *l);
+struct list_entry *list_next(struct list_entry *l, struct list_entry *e);
+int list_empty(struct list_entry *l);
 
-/** returns first element of a list */
-static inline struct list_entry *list_first(struct list_entry *l)
-{
-	return (l->next == l) ? NULL : l->next;
-}
-
-/** returns last element of a list */
-static inline struct list_entry *list_last(struct list_entry *l)
-{
-	return (l->prev == l) ? NULL : l->prev;
-}
-
-/** returns next element on a list */
-static inline struct list_entry *list_next(struct list_entry *l,
-					   struct list_entry *e)
-{
-	return (e->next == l) ? NULL : e->next;
-}
-
-/** is list empty? */
-static inline int list_empty(struct list_entry *l)
-{
-	return (l->prev == l);
-}
-
-#endif
+#endif /* __SUNXI_FEXC_COMMON_H__  */

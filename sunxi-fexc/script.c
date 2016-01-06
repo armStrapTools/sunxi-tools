@@ -28,241 +28,241 @@
  */
 struct script *script_new(void)
 {
-	struct script *script;
-	if ((script = malloc(sizeof(*script))))
-		list_init(&script->sections);
-	return script;
+    struct script *script;
+    if ((script = malloc(sizeof(*script))))
+        list_init(&script->sections);
+    return script;
 }
 
 void script_delete(struct script *script)
 {
-	struct list_entry *o;
+    struct list_entry *o;
 
-	assert(script);
+    assert(script);
 
-	while ((o = list_last(&script->sections))) {
-		struct script_section *section = container_of(o,
-			       struct script_section, sections);
+    while ((o = list_last(&script->sections))) {
+        struct script_section *section = container_of(o,
+                                         struct script_section, sections);
 
-		script_section_delete(section);
-	}
+        script_section_delete(section);
+    }
 
-	free(script);
+    free(script);
 }
 
 /*
  */
 struct script_section *script_section_new(struct script *script,
-					  const char *name)
+        const char *name)
 {
-	struct script_section *section;
+    struct script_section *section;
 
-	assert(script);
-	assert(name && *name);
+    assert(script);
+    assert(name && *name);
 
-	if ((section = malloc(sizeof(*section)))) {
-		size_t l = strlen(name);
-		if (l>31) /* truncate */
-			l=31;
-		memcpy(section->name, name, l);
-		section->name[l] = '\0';
+    if ((section = malloc(sizeof(*section)))) {
+        size_t l = strlen(name);
+        if (l>31) /* truncate */
+            l=31;
+        memcpy(section->name, name, l);
+        section->name[l] = '\0';
 
-		list_init(&section->entries);
-		list_append(&script->sections, &section->sections);
-	}
-	return section;
+        list_init(&section->entries);
+        list_append(&script->sections, &section->sections);
+    }
+    return section;
 }
 
 void script_section_delete(struct script_section *section)
 {
-	struct list_entry *o;
+    struct list_entry *o;
 
-	assert(section);
+    assert(section);
 
-	while ((o = list_last(&section->entries))) {
-		struct script_entry *entry = container_of(o,
-			       struct script_entry, entries);
+    while ((o = list_last(&section->entries))) {
+        struct script_entry *entry = container_of(o,
+                                     struct script_entry, entries);
 
-		script_entry_delete(entry);
-	}
+        script_entry_delete(entry);
+    }
 
-	if (!list_empty(&section->sections))
-		list_remove(&section->sections);
+    if (!list_empty(&section->sections))
+        list_remove(&section->sections);
 }
 
 struct script_section *script_find_section(struct script *script,
-					   const char *name)
+        const char *name)
 {
-	struct list_entry *o;
-	struct script_section *section;
+    struct list_entry *o;
+    struct script_section *section;
 
-	assert(script);
-	assert(name);
+    assert(script);
+    assert(name);
 
-	for (o = list_first(&script->sections); o;
-	     o = list_next(&script->sections, o)) {
-		section = container_of(o, struct script_section, sections);
+    for (o = list_first(&script->sections); o;
+         o = list_next(&script->sections, o)) {
+        section = container_of(o, struct script_section, sections);
 
-		if (strcmp(section->name, name) == 0)
-			return section;
-	}
+        if (strcmp(section->name, name) == 0)
+            return section;
+    }
 
-	return NULL;
+    return NULL;
 }
 
 /*
  */
-static inline void script_entry_append(struct script_section *section,
-				       struct script_entry *entry,
-				       enum script_value_type type,
-				       const char *name)
+void script_entry_append(struct script_section *section,
+                         struct script_entry *entry,
+                         enum script_value_type type,
+                         const char *name)
 {
-	size_t l;
+    size_t l;
 
-	assert(section);
-	assert(entry);
-	assert(name);
+    assert(section);
+    assert(entry);
+    assert(name);
 
-	l = strlen(name);
-	if (l>31) /* truncate */
-		l=31;
-	memcpy(entry->name, name, l);
-	entry->name[l] = '\0';
+    l = strlen(name);
+    if (l>31) /* truncate */
+        l=31;
+    memcpy(entry->name, name, l);
+    entry->name[l] = '\0';
 
-	entry->type = type;
+    entry->type = type;
 
-	list_append(&section->entries, &entry->entries);
+    list_append(&section->entries, &entry->entries);
 }
 
 void script_entry_delete(struct script_entry *entry)
 {
-	void *container;
+    void *container;
 
-	assert(entry);
-	assert(entry->type == SCRIPT_VALUE_TYPE_SINGLE_WORD ||
-	       entry->type == SCRIPT_VALUE_TYPE_STRING ||
-	       entry->type == SCRIPT_VALUE_TYPE_GPIO ||
-	       entry->type == SCRIPT_VALUE_TYPE_NULL);
+    assert(entry);
+    assert(entry->type == SCRIPT_VALUE_TYPE_SINGLE_WORD ||
+           entry->type == SCRIPT_VALUE_TYPE_STRING ||
+           entry->type == SCRIPT_VALUE_TYPE_GPIO ||
+           entry->type == SCRIPT_VALUE_TYPE_NULL);
 
-	if (!list_empty(&entry->entries))
-		list_remove(&entry->entries);
+    if (!list_empty(&entry->entries))
+        list_remove(&entry->entries);
 
-	switch(entry->type) {
-	case SCRIPT_VALUE_TYPE_SINGLE_WORD:
-		container = container_of(entry, struct script_single_entry, entry);
-		break;
-	case SCRIPT_VALUE_TYPE_STRING:
-		container = container_of(entry, struct script_string_entry, entry);
-		break;
-	case SCRIPT_VALUE_TYPE_GPIO:
-		container = container_of(entry, struct script_gpio_entry, entry);
-		break;
-	case SCRIPT_VALUE_TYPE_NULL:
-		container = container_of(entry, struct script_null_entry, entry);
-		break;
-	default:
-		abort();
-	}
+    switch(entry->type) {
+    case SCRIPT_VALUE_TYPE_SINGLE_WORD:
+        container = container_of(entry, struct script_single_entry, entry);
+        break;
+    case SCRIPT_VALUE_TYPE_STRING:
+        container = container_of(entry, struct script_string_entry, entry);
+        break;
+    case SCRIPT_VALUE_TYPE_GPIO:
+        container = container_of(entry, struct script_gpio_entry, entry);
+        break;
+    case SCRIPT_VALUE_TYPE_NULL:
+        container = container_of(entry, struct script_null_entry, entry);
+        break;
+    default:
+        abort();
+    }
 
-	free(container);
+    free(container);
 }
 
 struct script_null_entry *script_null_entry_new(struct script_section *section,
-						const char *name)
+        const char *name)
 {
-	struct script_null_entry *entry;
+    struct script_null_entry *entry;
 
-	assert(section);
-	assert(name && *name);
+    assert(section);
+    assert(name && *name);
 
-	if ((entry = malloc(sizeof(*entry)))) {
-		script_entry_append(section, &entry->entry,
-				    SCRIPT_VALUE_TYPE_NULL, name);
-	}
+    if ((entry = malloc(sizeof(*entry)))) {
+        script_entry_append(section, &entry->entry,
+                            SCRIPT_VALUE_TYPE_NULL, name);
+    }
 
-	return entry;
+    return entry;
 }
 
 struct script_single_entry *script_single_entry_new(struct script_section *section,
-						    const char *name,
-						    uint32_t value)
+        const char *name,
+        uint32_t value)
 {
-	struct script_single_entry *entry;
+    struct script_single_entry *entry;
 
-	assert(section);
-	assert(name && *name);
+    assert(section);
+    assert(name && *name);
 
-	if ((entry = malloc(sizeof(*entry)))) {
-		entry->value = value;
+    if ((entry = malloc(sizeof(*entry)))) {
+        entry->value = value;
 
-		script_entry_append(section, &entry->entry,
-				    SCRIPT_VALUE_TYPE_SINGLE_WORD, name);
-	}
+        script_entry_append(section, &entry->entry,
+                            SCRIPT_VALUE_TYPE_SINGLE_WORD, name);
+    }
 
-	return entry;
+    return entry;
 }
 
 struct script_string_entry *script_string_entry_new(struct script_section *section,
-						       const char *name,
-						       size_t l, const char *s)
+        const char *name,
+        size_t l, const char *s)
 {
-	struct script_string_entry *entry;
+    struct script_string_entry *entry;
 
-	assert(section);
-	assert(name);
-	assert(s);
+    assert(section);
+    assert(name);
+    assert(s);
 
-	if ((entry = malloc(sizeof(*entry)+l+1))) {
-		entry->l = l;
-		memcpy(entry->string, s, l);
-		entry->string[l] = '\0';
+    if ((entry = malloc(sizeof(*entry)+l+1))) {
+        entry->l = l;
+        memcpy(entry->string, s, l);
+        entry->string[l] = '\0';
 
-		script_entry_append(section, &entry->entry,
-				    SCRIPT_VALUE_TYPE_STRING, name);
-	}
+        script_entry_append(section, &entry->entry,
+                            SCRIPT_VALUE_TYPE_STRING, name);
+    }
 
-	return entry;
+    return entry;
 }
 
 struct script_gpio_entry *script_gpio_entry_new(struct script_section *section,
-						const char *name,
-						unsigned port, unsigned num,
-						int32_t data[4])
+        const char *name,
+        unsigned port, unsigned num,
+        int32_t data[4])
 {
-	struct script_gpio_entry *entry;
+    struct script_gpio_entry *entry;
 
-	assert(section);
-	assert(name && *name);
+    assert(section);
+    assert(name && *name);
 
-	if ((entry = malloc(sizeof(*entry)))) {
-		entry->port = port;
-		entry->port_num = num;
-		for (int i=0; i<4; i++)
-			entry->data[i] = data[i];
+    if ((entry = malloc(sizeof(*entry)))) {
+        entry->port = port;
+        entry->port_num = num;
+        for (int i=0; i<4; i++)
+            entry->data[i] = data[i];
 
-		script_entry_append(section, &entry->entry,
-				    SCRIPT_VALUE_TYPE_GPIO, name);
-	}
+        script_entry_append(section, &entry->entry,
+                            SCRIPT_VALUE_TYPE_GPIO, name);
+    }
 
-	return entry;
+    return entry;
 }
 
 struct script_entry *script_find_entry(struct script_section *section,
-				       const char *name)
+                                       const char *name)
 {
-	struct list_entry *o;
-	struct script_entry *ep;
+    struct list_entry *o;
+    struct script_entry *ep;
 
-	assert(section);
-	assert(name);
+    assert(section);
+    assert(name);
 
-	for (o = list_first(&section->entries); o;
-	     o = list_next(&section->entries, o)) {
-		ep = container_of(o, struct script_entry, entries);
+    for (o = list_first(&section->entries); o;
+         o = list_next(&section->entries, o)) {
+        ep = container_of(o, struct script_entry, entries);
 
-		if (strcmp(ep->name, name) == 0)
-			return ep;
-	}
+        if (strcmp(ep->name, name) == 0)
+            return ep;
+    }
 
-	return NULL;
+    return NULL;
 }

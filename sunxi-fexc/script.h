@@ -21,60 +21,60 @@
 
 /** head of the data tree */
 struct script {
-	struct list_entry sections;
+    struct list_entry sections;
 };
 
 /** head of each section */
 struct script_section {
-	char name[32];
+    char name[32];
 
-	struct list_entry sections;
-	struct list_entry entries;
+    struct list_entry sections;
+    struct list_entry entries;
 };
 
 /** types of values */
 enum script_value_type {
-	SCRIPT_VALUE_TYPE_SINGLE_WORD = 1,
-	SCRIPT_VALUE_TYPE_STRING,
-	SCRIPT_VALUE_TYPE_MULTI_WORD,
-	SCRIPT_VALUE_TYPE_GPIO,
-	SCRIPT_VALUE_TYPE_NULL,
+    SCRIPT_VALUE_TYPE_SINGLE_WORD = 1,
+    SCRIPT_VALUE_TYPE_STRING,
+    SCRIPT_VALUE_TYPE_MULTI_WORD,
+    SCRIPT_VALUE_TYPE_GPIO,
+    SCRIPT_VALUE_TYPE_NULL,
 };
 
 /** generic entry */
 struct script_entry {
-	char name[32];
-	enum script_value_type type;
+    char name[32];
+    enum script_value_type type;
 
-	struct list_entry entries;
+    struct list_entry entries;
 };
 
 /** null entry */
 struct script_null_entry {
-	struct script_entry entry;
+    struct script_entry entry;
 };
 
 /** entry with 32b value */
 struct script_single_entry {
-	struct script_entry entry;
+    struct script_entry entry;
 
-	uint32_t value;
+    uint32_t value;
 };
 
 /** entry with string value */
 struct script_string_entry {
-	struct script_entry entry;
+    struct script_entry entry;
 
-	size_t l;
-	char string[];
+    size_t l;
+    char string[];
 };
 
 /** entry describing a GPIO */
 struct script_gpio_entry {
-	struct script_entry entry;
+    struct script_entry entry;
 
-	unsigned port, port_num;
-	int32_t data[4];
+    unsigned port, port_num;
+    int32_t data[4];
 };
 
 /** create a new script tree */
@@ -84,35 +84,35 @@ void script_delete(struct script *);
 
 /** create a new section appended to a given tree */
 struct script_section *script_section_new(struct script *script,
-					  const char *name);
+        const char *name);
 /** deletes a section recursvely and removes it from the script */
 void script_section_delete(struct script_section *section);
 
 /** find existing section */
 struct script_section *script_find_section(struct script *script,
-					   const char *name);
+        const char *name);
 
 /** deletes an entry and removes it from the section */
 void script_entry_delete(struct script_entry *entry);
 
 /** create a new empty/null entry appended to a section */
 struct script_null_entry *script_null_entry_new(struct script_section *section,
-						const char *name);
+        const char *name);
 /** create a new single word entry appended to a section */
 struct script_single_entry *script_single_entry_new(struct script_section *section,
-						    const char *name,
-						    uint32_t value);
+        const char *name,
+        uint32_t value);
 /** create a new string entry appended to a section */
 struct script_string_entry *script_string_entry_new(struct script_section *section,
-						    const char *name,
-						    size_t l, const char *s);
+        const char *name,
+        size_t l, const char *s);
 /** create a new GPIO entry appended to a section */
 struct script_gpio_entry *script_gpio_entry_new(struct script_section *script,
-						const char *name,
-						unsigned port, unsigned num,
-						int32_t data[4]);
+        const char *name,
+        unsigned port, unsigned num,
+        int32_t data[4]);
 
 /** find existing entry in a giving section */
 struct script_entry *script_find_entry(struct script_section *section,
-				       const char *name);
+                                       const char *name);
 #endif
