@@ -34,7 +34,17 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
-#include "endian_compat.h"
+#ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
+#define htole32(x) CFSwapInt32HostToLittle(x)
+#define le32toh(x) CFSwapInt32LittleToHost(x)
+#define htole16(x) CFSwapInt16HostToLittle(x)
+#define le16toh(x) CFSwapInt16LittleToHost(x)
+#else
+#include <endian.h>
+#endif
+
+//#include "endian_compat.h"
 #include "progress.h"
 
 struct  aw_usb_request {
@@ -293,10 +303,7 @@ double aw_write_buffer(libusb_device_handle *usb, void *buf, uint32_t offset,
 	if (uboot_size > 0 && offset <= uboot_entry + uboot_size
 			   && offset + len >= uboot_entry)
 	{
-		fprintf(stderr, "ERROR: Attempt to overwrite U-Boot! "
-			"Request 0x%08X-0x%08X overlaps 0x%08X-0x%08X.\n",
-			offset, offset + len,
-			uboot_entry, uboot_entry + uboot_size);
+		fprintf(stderr, "ERROR: Attempt to overwrite U-Boot! Request 0x%08X-0x%08X overlaps 0x%08X-0x%08X.\n", offset, (unsigned int)(offset + len), uboot_entry, uboot_entry + uboot_size);
 		exit(1);
 	}
 	double start = gettime();

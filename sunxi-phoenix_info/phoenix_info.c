@@ -25,7 +25,15 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "endian_compat.h"
+#ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
+#define htole32(x) CFSwapInt32HostToLittle(x)
+#define le32toh(x) CFSwapInt32LittleToHost(x)
+#define htole16(x) CFSwapInt16HostToLittle(x)
+#define le16toh(x) CFSwapInt16LittleToHost(x)
+#else
+#include <endian.h>
+#endif
 
 struct phoenix_ptable {
 	char signature[16];		/* "PHOENIX_CARD_IMG" */
@@ -149,7 +157,7 @@ int main(int argc, char **argv)
 		in = fopen(argv[optind], "rb");
 	}
 	fseek(in, 0x1C00, SEEK_CUR);
-	fread(&ptable, 1, 0x400, in);
+	i = fread(&ptable, 1, 0x400, in);
 	if (strncmp(ptable.signature, "PHOENIX_CARD_IMG", 16) != 0) {
 		fprintf(stderr, "ERROR: Not a phoenix image\n");
 		exit(1);

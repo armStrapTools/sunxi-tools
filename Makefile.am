@@ -1,6 +1,6 @@
 DIST_SUBDIRS = sunxi-bootinfo sunxi-meminfo sunxi-nand-part sunxi-phoenix_info sunxi-pio sunxi-script_extractor sunxi-fexc sunxi-fel sunxi-baremetal
 SUBDIRS = sunxi-nand-part sunxi-phoenix_info sunxi-fexc sunxi-bootinfo
-EXTRA_DIST = README.md AUTHORS COPYING INSTALL include sunxi-tools.8
+EXTRA_DIST = README.md AUTHORS COPYING INSTALL sunxi-tools.8
 man_MANS = sunxi-tools.8
 
 if ARM_BUILD
