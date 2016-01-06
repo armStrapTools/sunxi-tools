@@ -1,5 +1,5 @@
 AC_PREREQ([2.69])
-AC_INIT([sunxi-tools], [1.4], [https://github.com/linux-sunxi/sunxi-tools])
+AC_INIT([sunxi-tools], [1.4.3], [https://github.com/linux-sunxi/sunxi-tools])
 AC_CONFIG_AUX_DIR([.])
 
 AC_CANONICAL_SYSTEM
