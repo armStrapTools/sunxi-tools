@@ -34,7 +34,15 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "endian_compat.h"
+#ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
+#define htole32(x) CFSwapInt32HostToLittle(x)
+#define le32toh(x) CFSwapInt32LittleToHost(x)
+#define htole16(x) CFSwapInt16HostToLittle(x)
+#define le16toh(x) CFSwapInt16LittleToHost(x)
+#else
+#include <endian.h>
+#endif
 
 #define PIO_REG_SIZE 0x228 /*0x300*/
 #define PIO_PORT_SIZE 0x24
