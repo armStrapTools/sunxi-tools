@@ -1,6 +1,7 @@
+EXTRA_DIST = adb-devprobe.sh boot_head.lds boot_head.S fel-copy.c fel-pio.c fel-pio.lds fel-sdboot.c fel-sdboot.lds fel-to-spl-thunk.S jtag-loop.c jtag-loop.lds jtag-loop.S ramboot.uboot-sh ramboot.scr sunxi-baremetal.8.in mksunxiboot.c
+
 if BUILD_BAREMETAL
 
-EXTRA_DIST = adb-devprobe.sh boot_head.lds boot_head.S fel-copy.c fel-pio.c fel-pio.lds fel-sdboot.c fel-sdboot.lds fel-to-spl-thunk.S jtag-loop.c jtag-loop.lds jtag-loop.S ramboot.uboot-sh ramboot.scr sunxi-baremetal.8.in mksunxiboot.c
 pkgdata_DATA = sunxi-fel-copy.bin sunxi-fel-pio.bin sunxi-jtag-loop.sunxi sunxi-jtag-loop-alt.sunxi sunxi-fel-sdboot.sunxi sunxi-boot_head_sun4i.bin sunxi-boot_head_sun5i.bin ramboot.scr ramboot.uboot-sh adb-devprobe.sh fel-to-spl-thunk.S
 man_MANS = sunxi-baremetal.8
 
@@ -86,3 +87,6 @@ endif
 
 clean-local:
 	-rm -f *.nm *.bin *.elf *.sunxi sunxi-baremetal.8 mksunxiboot
+
+BUILT_SOURCES = 
+include ../build-aux/version.mk

@@ -3,3 +3,5 @@ EXTRA_DIST = sunxi-phoenix_info.8
 sunxi_phoenix_info_SOURCES = phoenix_info.c
 man_MANS = sunxi-phoenix_info.8
 
+BUILT_SOURCES = 
+include ../build-aux/version.mk

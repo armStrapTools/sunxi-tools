@@ -20,11 +20,6 @@ You can cross-compile the tools by specifying the `--host` switch, the proper to
     ./configure --host=arm-linux-gnueabihf
     make
 
-To build the bare-metal tools, use the '--with-baremetal' switch when running configure.
-
-    ./configure --with-baremetal
-    make
-
 To install the tools, just do a `make install` once everything is build. To change the default installation path, use the `--prefix` switch.
 
     ./configure --host=arm-linux-gnueabihf --prefix=/home/user/arm-build/usr
@@ -182,7 +177,7 @@ Simple wrapper around sunxi-pio and sunxi-fel to allos GPIO manipulations via FE
 
 Bare Metal Tools
 ----------------
-Theses tools are for bare-metal (no operating system) use, they are not normally build, to build them, use the --with-baremetal when you run configure.
+Theses tools are for bare-metal (no operating system) use.
 
 ###sunxi-fel-copy
 ARM native tool to copy a memory area to another.

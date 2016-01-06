@@ -1,5 +1,5 @@
 AC_PREREQ([2.69])
-AC_INIT([sunxi-phoenix_info], [1.4.3], [https://github.com/linux-sunxi/sunxi-tools])
+AC_INIT([sunxi-phoenix_info], [m4_esyscmd([../build-aux/git-version-gen .tarball-version])], [https://github.com/linux-sunxi/sunxi-tools])
 AC_CONFIG_SRCDIR([phoenix_info.c])
 AC_CONFIG_HEADERS([config.h])
 

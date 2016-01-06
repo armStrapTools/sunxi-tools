@@ -12,3 +12,6 @@ install-exec-hook:
 uninstall-local:
 	-rm -f $(DESTDIR)$(bindir)/sunxi-bin2fex
 	-rm -f $(DESTDIR)$(bindir)/sunxi-fex2bin
+
+BUILT_SOURCES = 
+include ../build-aux/version.mk

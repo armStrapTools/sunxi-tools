@@ -1,5 +1,5 @@
 AC_PREREQ([2.69])
-AC_INIT([sunxi-baremetal], [1.4.3], [https://github.com/linux-sunxi/sunxi-tools])
+AC_INIT([sunxi-baremetal], [m4_esyscmd([../build-aux/git-version-gen .tarball-version])], [https://github.com/linux-sunxi/sunxi-tools])
 m4_include([ax_cc_for_build.m4])
 AC_CONFIG_AUX_DIR([.])
 AC_CONFIG_SRCDIR([mksunxiboot.c])
