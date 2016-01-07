@@ -1,5 +1,5 @@
 AC_PREREQ([2.69])
-AC_INIT([sunxi-pio], [m4_esyscmd([../version-gen ../version])], [https://github.com/linux-sunxi/sunxi-tools])
+AC_INIT([sunxi-pio], [m4_esyscmd([./version-gen version])], [https://github.com/linux-sunxi/sunxi-tools])
 AC_CONFIG_SRCDIR([pio.c])
 AC_CONFIG_HEADERS([config.h])
 

@@ -295,7 +295,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = sunxi-bootinfo.8
+EXTRA_DIST = sunxi-bootinfo.8 version-gen version
 sunxi_bootinfo_SOURCES = bootinfo.c
 man_MANS = sunxi-bootinfo.8
 all: config.h
@@ -820,6 +820,9 @@ uninstall-man: uninstall-man8
 
 .PRECIOUS: Makefile
 
+
+version:
+	echo $(VERSION) > $@-t && mv $@-t $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -299,7 +299,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 man_MANS = sunxi-nand-part.8
-EXTRA_DIST = sunxi-nand-part.8
+EXTRA_DIST = sunxi-nand-part.8 version-gen version
 sunxi_nand_part_SOURCES = sunxi-nand.c sunxi-nand-common.c sunxi-nand-read.c sunxi-nand-sun4i.c sunxi-nand-sun7i.c sunxi-nand-write.c sunxi-nand-common.h sunxi-nand.h sunxi-nand-read.h sunxi-nand-sun4i.h sunxi-nand-sun7i.h sunxi-nand-write.h
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
@@ -828,6 +828,9 @@ uninstall-man: uninstall-man8
 
 .PRECIOUS: Makefile
 
+
+version:
+	echo $(VERSION) > $@-t && mv $@-t $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

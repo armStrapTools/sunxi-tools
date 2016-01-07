@@ -300,7 +300,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = sunxi-script_extractor.8
+EXTRA_DIST = sunxi-script_extractor.8 version-gen version
 @ARM_BUILD_TRUE@sunxi_script_extractor_SOURCES = script_extractor.c
 @ARM_BUILD_TRUE@sunxi_script_extractor_CPPFLAGS = -I../include/
 @ARM_BUILD_TRUE@man_MANS = sunxi-script_extractor.8
@@ -840,6 +840,9 @@ uninstall-man: uninstall-man8
 
 .PRECIOUS: Makefile
 
+
+version:
+	echo $(VERSION) > $@-t && mv $@-t $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -311,7 +311,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = sunxi-fel-gpio sunxi-fel.8 sunxi-fel-gpio.8
+EXTRA_DIST = sunxi-fel-gpio sunxi-fel.8 sunxi-fel-gpio.8 version-gen version
 @BUILD_SUNXIFEL_TRUE@bin_SCRIPTS = sunxi-fel-gpio
 @BUILD_SUNXIFEL_TRUE@man_MANS = sunxi-fel.8 sunxi-fel-gpio.8
 @BUILD_SUNXIFEL_TRUE@sunxi_fel_SOURCES = fel.c fel-to-spl-thunk.h progress.c progress.h
@@ -903,6 +903,9 @@ uninstall-man: uninstall-man8
 
 .PRECIOUS: Makefile
 
+
+version:
+	echo $(VERSION) > $@-t && mv $@-t $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

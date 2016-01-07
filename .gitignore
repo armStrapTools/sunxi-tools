@@ -9,12 +9,10 @@
 /**/stamp-h1
 /**/deps
 /**/.deps/
-
 /**/*.o
 /**/*.swp
 /**/*.old
 /**/*~
-/**/version
 
 /sunxi-baremetal/mksunxiboot
 /sunxi-baremetal/sunxi-baremetal.8

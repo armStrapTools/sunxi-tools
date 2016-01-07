@@ -1,5 +1,5 @@
 AC_PREREQ([2.69])
-AC_INIT([sunxi-nand-part], [m4_esyscmd([../version-gen ../version])], [https://github.com/armStrapTools/sunxi-tools/issues], [], [https://www.armstrap.net])
+AC_INIT([sunxi-nand-part], [m4_esyscmd([./version-gen version])], [https://github.com/armStrapTools/sunxi-tools/issues], [], [https://www.armstrap.net])
 AC_COPYRIGHT([Copyright (C) 2015-2016  Eddy Beaupre <eddy@beaupre.biz>])
 AC_REVISION([Revision: 1.2])
 AC_CONFIG_SRCDIR([sunxi-nand.c])

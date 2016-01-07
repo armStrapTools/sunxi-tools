@@ -302,7 +302,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = sunxi-pio.8
+EXTRA_DIST = sunxi-pio.8 version-gen version
 @ARM_BUILD_TRUE@sunxi_pio_SOURCES = pio.c
 @ARM_BUILD_TRUE@sunxi_pio_CFLAGS = -static
 @ARM_BUILD_TRUE@man_MANS = sunxi-pio.8
@@ -842,6 +842,9 @@ uninstall-man: uninstall-man8
 
 .PRECIOUS: Makefile
 
+
+version:
+	echo $(VERSION) > $@-t && mv $@-t $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
