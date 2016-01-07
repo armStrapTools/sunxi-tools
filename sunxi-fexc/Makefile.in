@@ -298,7 +298,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = sunxi-fexc.8
+EXTRA_DIST = sunxi-fexc.8 sunxi-bin2fex.8 sunxi-fex2bin.8
 sunxi_fexc_SOURCES = fexc.c fexc.h script.h script.c script_uboot.h script_uboot.c script_bin.h script_bin.c script_fex.h script_fex.c common.c common.h version-gen version
 man_MANS = sunxi-fexc.8 sunxi-bin2fex.8 sunxi-fex2bin.8
 all: config.h
