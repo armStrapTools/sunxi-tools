@@ -14,7 +14,7 @@
 /**/*.swp
 /**/*.old
 /**/*~
-/**/.version
+/**/version
 
 /sunxi-baremetal/mksunxiboot
 /sunxi-baremetal/sunxi-baremetal.8

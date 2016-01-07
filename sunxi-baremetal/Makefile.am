@@ -87,6 +87,3 @@ endif
 
 clean-local:
 	-rm -f *.nm *.bin *.elf *.sunxi sunxi-baremetal.8 mksunxiboot
-
-BUILT_SOURCES = 
-include ../build-aux/version.mk

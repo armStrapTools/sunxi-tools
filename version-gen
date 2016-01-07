@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DEFAULT_VERSION="1.4.0"
+
+if test -f "$1"
+then
+	GIT_VERSION="$(cat $1)"
+else
+	GIT_VERSION="$(git describe --match "v[0-9]*" --abbrev=7 HEAD 2>/dev/null)"
+	if test -z "$GIT_VERSION"
+	then
+		GIT_VERSION="$DEFAULT_VERSION"
+	fi
+fi
+
+echo -n "$(echo $GIT_VERSION | sed -e '{s/-/./g};{s/v//g}')"

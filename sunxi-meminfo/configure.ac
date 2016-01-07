@@ -1,5 +1,5 @@
 AC_PREREQ([2.69])
-AC_INIT([sunxi-meminfo], [m4_esyscmd([../build-aux/git-version-gen .tarball-version])], [https://github.com/linux-sunxi/sunxi-tools])
+AC_INIT([sunxi-meminfo], [m4_esyscmd([../version-gen ../version])], [https://github.com/linux-sunxi/sunxi-tools])
 AC_CONFIG_SRCDIR([meminfo.c])
 AC_CONFIG_HEADERS([config.h])
 
