@@ -106,17 +106,21 @@ debian-copyright:
 	@echo " Public License version 2 can be found in \"/usr/share/common-licenses/GPL-2\"." >> debian-copyright
 
 dpkg-deb: dist-gzip debian-control debian-changelog debian-compat debian-docs debian-rules debian-format debian-copyright
-	rm -rf $(top_srcdir)/packages
-	mkdir $(top_srcdir)/packages
-	(cd $(top_srcdir)/packages && bzr dh-make --bzr-only $(PACKAGE) $(VERSION) ../$(PACKAGE)-$(VERSION).tar.gz)
-	$(MKDIR_P) $(top_srcdir)/packages/$(PACKAGE)/debian/source/
-	$(INSTALL_DATA) debian-control $(top_srcdir)/packages/$(PACKAGE)/debian/control
-	$(INSTALL_DATA) debian-changelog $(top_srcdir)/packages/$(PACKAGE)/debian/changelog
-	$(INSTALL_DATA) debian-compat $(top_srcdir)/packages/$(PACKAGE)/debian/compat
-	$(INSTALL_DATA) debian-docs $(top_srcdir)/packages/$(PACKAGE)/debian/docs
-	$(INSTALL_DATA) debian-copyright $(top_srcdir)/packages/$(PACKAGE)/debian/copyright
-	$(INSTALL_DATA) debian-format $(top_srcdir)/packages/$(PACKAGE)/debian/source/format
-	$(INSTALL_SCRIPT) debian-rules $(top_srcdir)/packages/$(PACKAGE)/debian/rules
-	(cd $(top_srcdir)/packages/$(PACKAGE) && bzr add)
-	(cd $(top_srcdir)/packages/$(PACKAGE) && bzr commit -m "Initial commit of Debian packaging.")
-	(cd $(top_srcdir)/packages/$(PACKAGE) && bzr builddeb)
+	rm -rf $(abs_top_srcdir)/packages
+	mkdir $(abs_top_srcdir)/packages
+	(cd $(abs_top_srcdir)/packages && bzr dh-make --bzr-only $(PACKAGE) $(VERSION) $(abs_top_srcdir)/$(PACKAGE)-$(VERSION).tar.gz)
+	$(MKDIR_P) $(abs_top_srcdir)/packages/$(PACKAGE)/debian/source/
+	$(INSTALL_DATA) debian-control $(abs_top_srcdir)/packages/$(PACKAGE)/debian/control
+	$(INSTALL_DATA) debian-changelog $(abs_top_srcdir)/packages/$(PACKAGE)/debian/changelog
+	$(INSTALL_DATA) debian-compat $(abs_top_srcdir)/packages/$(PACKAGE)/debian/compat
+	$(INSTALL_DATA) debian-docs $(abs_top_srcdir)/packages/$(PACKAGE)/debian/docs
+	$(INSTALL_DATA) debian-copyright $(abs_top_srcdir)/packages/$(PACKAGE)/debian/copyright
+	$(INSTALL_DATA) debian-format $(abs_top_srcdir)/packages/$(PACKAGE)/debian/source/format
+	$(INSTALL_SCRIPT) debian-rules $(abs_top_srcdir)/packages/$(PACKAGE)/debian/rules
+	(cd $(abs_top_srcdir)/packages/$(PACKAGE) && bzr add)
+	(cd $(abs_top_srcdir)/packages/$(PACKAGE) && bzr commit -m "Initial commit of Debian packaging.")
+	(cd $(abs_top_srcdir)/packages/$(PACKAGE) && bzr builddeb)
+	-rm -rf $(abs_top_srcdir)/packages/build-area
+	-rm -rf $(abs_top_srcdir)/packages//$(PACKAGE)
+	-rm -f $(abs_top_srcdir)/$(PACKAGE)-$(VERSION).tar.gz
+	@echo -e "\nDebian package ready in $(abs_top_srcdir)/packages/\n"
