@@ -16,7 +16,6 @@ AC_DEFINE([PACKAGE_EMAIL], ["eddy@beaupre.biz"], [Package Email])
 AC_DEFINE([PACKAGE_LICENCE_NAME], ["GPLv2+"], [Package Licence Name])
 AC_DEFINE([PACKAGE_LICENCE_DESCRIPTION], ["GNU GPL version 2 or later"], [Package Licence Description])
 AC_DEFINE([PACKAGE_LICENCE_URL], ["http://gnu.org/licenses/gpl-2.0.html"], [Package Licence URL])
-AC_DEFINE_UNQUOTED([PACKAGE_GIT_VERSION], ["`git describe --always`"], [Package Git Version])
 AC_DEFINE_UNQUOTED([PACKAGE_BUILD_DATE], ["`date -R`"], [Package Date])
  
 AC_CONFIG_FILES([Makefile])

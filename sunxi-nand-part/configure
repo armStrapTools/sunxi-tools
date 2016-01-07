@@ -3756,11 +3756,6 @@ $as_echo "#define PACKAGE_LICENCE_URL \"http://gnu.org/licenses/gpl-2.0.html\"" 
 
 
 cat >>confdefs.h <<_ACEOF
-#define PACKAGE_GIT_VERSION "`git describe --always`"
-_ACEOF
-
-
-cat >>confdefs.h <<_ACEOF
 #define PACKAGE_BUILD_DATE "`date -R`"
 _ACEOF
 

@@ -287,7 +287,7 @@ void full_version(void) {
  * \brief Show version information.
  */
 void version(void) {
-    printf("%s version %s (%s).\n", PACKAGE, PACKAGE_GIT_VERSION, PACKAGE_BUILD_DATE);
+    printf("%s version %s (%s).\n", PACKAGE, PACKAGE_VERSION, PACKAGE_BUILD_DATE);
     printf("%s <%s>.\n", PACKAGE_COPYRIGHT, PACKAGE_EMAIL);
 }
 

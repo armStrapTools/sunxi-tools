@@ -15,9 +15,6 @@
 /* Package Email */
 #undef PACKAGE_EMAIL
 
-/* Package Git Version */
-#undef PACKAGE_GIT_VERSION
-
 /* Package Licence Description */
 #undef PACKAGE_LICENCE_DESCRIPTION
 
