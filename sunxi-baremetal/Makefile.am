@@ -1,4 +1,4 @@
-EXTRA_DIST = adb-devprobe.sh boot_head.lds boot_head.S fel-copy.c fel-pio.c fel-pio.lds fel-sdboot.c fel-sdboot.lds fel-to-spl-thunk.S jtag-loop.c jtag-loop.lds jtag-loop.S ramboot.uboot-sh ramboot.scr sunxi-baremetal.8.in mksunxiboot.c version-gen version
+EXTRA_DIST = adb-devprobe.sh boot_head.lds boot_head.S fel-copy.c fel-pio.c fel-pio.lds fel-sdboot.c fel-sdboot.lds fel-to-spl-thunk.S jtag-loop.c jtag-loop.lds jtag-loop.S ramboot.uboot-sh ramboot.scr sunxi-baremetal.8.in mksunxiboot.c
 
 if BUILD_BAREMETAL
 
@@ -87,6 +87,3 @@ endif
 
 clean-local:
 	-rm -f *.nm *.bin *.elf *.sunxi sunxi-baremetal.8 mksunxiboot
-
-version:
-	echo $(VERSION) > $@-t && mv $@-t $@
